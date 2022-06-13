@@ -11,9 +11,7 @@ import (
 type Config struct {
 	Metadata struct {
 		Name        string
-		Version     string
 		Description string
-		Author      string
 	} `toml:"metadata"`
 
 	Content map[string]string `toml:"content"`

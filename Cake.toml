@@ -3,9 +3,7 @@
 
 [metadata]
 name = "Cakecutter"
-version = "0.1.0"
 description = "Cakecutter template (For rust)"
-author = "Dhravya Shah"
 
 [filestructure]
 root = ["LICENSE"]
