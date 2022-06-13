@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/cake-cutter/cli/cmd"
 	"github.com/joho/godotenv"
-	"will-change.later/cmd"
 )
 
 func main() {

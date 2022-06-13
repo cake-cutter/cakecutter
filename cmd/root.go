@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"will-change.later/utils"
+	"github.com/cake-cutter/cli/cli/utils"
 
 	"github.com/spf13/cobra"
 )

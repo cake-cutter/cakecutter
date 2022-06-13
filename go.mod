@@ -1,4 +1,4 @@
-module will-change.later
+module github.com/cake-cutter/cli/cli
 
 go 1.18
 
