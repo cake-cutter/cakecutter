@@ -1,0 +1,27 @@
+# This is the Cakefile for this project.
+# Feel free to add Cakefiles to your own projects!
+
+[metadata]
+name = "Cakecutter"
+version = "0.1.0"
+description = "Cakecutter template (For rust)"
+author = "Dhravya Shah"
+
+[filestructure]
+root = ["LICENSE"]
+src = ["main.go"]
+a = []
+b--b = []
+
+# If you want to, you can literally write all the content here in one file but then what's the point of a "template" lol
+[content]
+LICENSE = """
+Copyright (c) 2020 Dhravya Shah
+"""
+src--main-go = """
+package main
+"""
+
+[commands]
+# Commands are run every time a new project is created.
+1 = ["echo", "hey"]
