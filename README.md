@@ -8,7 +8,7 @@ Create projects from pre-built cakes (templates)! Supports files, packages, cont
 
 ### Installation
 ```
-go install github.com/cake-cutter/cli@latest
+go install github.com/cake-cutter/cc@latest
 ```
 
 ### Usage

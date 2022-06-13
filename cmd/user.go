@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/cake-cutter/cli/utils"
+	"github.com/cake-cutter/cc/utils"
 	"github.com/spf13/cobra"
 )
 

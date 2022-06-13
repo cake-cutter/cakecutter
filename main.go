@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/cake-cutter/cli/cmd"
+	"github.com/cake-cutter/cc/cmd"
 	"github.com/joho/godotenv"
 )
 
