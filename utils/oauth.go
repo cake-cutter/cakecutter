@@ -19,7 +19,7 @@ func Login() {
 	)
 
 	resp, err := http.PostForm("https://github.com/login/device/code", url.Values{
-		"client_id": {os.Getenv("GITHUB_CLIENT_ID")},
+		"client_id": {"e283acd5da18077bcee9"},
 	})
 	Check(err)
 
@@ -41,7 +41,7 @@ func Login() {
 	var res *http.Response
 
 	res, err = http.PostForm("https://github.com/login/oauth/access_token", url.Values{
-		"client_id":   {os.Getenv("GITHUB_CLIENT_ID")},
+		"client_id":   {"e283acd5da18077bcee9"},
 		"device_code": {q.Get("device_code")},
 		"grant_type":  {"urn:ietf:params:oauth:grant-type:device_code"},
 	})
