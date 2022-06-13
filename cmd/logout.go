@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/cake-cutter/cli/cli/utils"
+	"github.com/cake-cutter/cli/utils"
 	"github.com/spf13/cobra"
 )
 

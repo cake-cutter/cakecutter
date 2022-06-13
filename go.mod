@@ -1,4 +1,4 @@
-module github.com/cake-cutter/cli/cli
+module github.com/cake-cutter/cli
 
 go 1.18
 
