@@ -3,8 +3,12 @@ package utils
 import (
 	"os"
 	"os/exec"
-	"strings"
 )
+
+func CutTheQuestions(ans *map[string]string, conf *Config) error {
+
+	return nil
+}
 
 func RemoveItemFromSlice(slice []string, s int) []string {
 	return append(slice[:s], slice[s+1:]...)
@@ -17,15 +21,14 @@ func CutDir(dir string, conf *Config) error {
 		if k == "root" {
 			k = ""
 		}
-		ke := strings.ReplaceAll(strings.ReplaceAll(k, "--", "/"), "-", ".")
 
-		err := os.MkdirAll(dir+"/"+ke, 0755)
+		err := os.MkdirAll(dir+"/"+k, 0755)
 		if err != nil {
 			return err
 		}
 
 		for _, va := range v {
-			_, err = os.Create(dir + "/" + ke + "/" + va)
+			_, err = os.Create(dir + "/" + k + "/" + va)
 			if err != nil {
 				return err
 			}
@@ -40,9 +43,7 @@ func CutFiles(dir string, conf *Config) error {
 
 	for k, v := range conf.Content {
 
-		ke := strings.ReplaceAll(strings.ReplaceAll(k, "--", "/"), "-", ".")
-
-		file, err := os.Create(dir + "/" + ke)
+		file, err := os.Create(dir + "/" + k)
 		if err != nil {
 			return err
 		}
