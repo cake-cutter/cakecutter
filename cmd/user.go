@@ -12,7 +12,7 @@ func init() {
 }
 
 var userCmd = &cobra.Command{
-	Use:   "user",
+	Use:   "whoami",
 	Short: "Checks if you are logged in with an account",
 	Long:  "Checks if you are logged in with an account",
 

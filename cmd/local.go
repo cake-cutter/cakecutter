@@ -15,7 +15,7 @@ func init() {
 var localCmd = &cobra.Command{
 	Use:   "local",
 	Short: "Creates a template using a local file",
-	Long:  "Creates a template using a local file",
+	Long:  "Creates a template using a local file. This is useful for creating templates from a TOML Cakefile file you created locally. Read the docs to see how to create a Cakefile",
 
 	Args: func(cmd *cobra.Command, args []string) error {
 		if len(args) < 1 {

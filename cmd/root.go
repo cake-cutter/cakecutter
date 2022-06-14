@@ -10,7 +10,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "cakecutter",
+	Use:   "cc",
 	Short: "Create projects from pre-built cakes (templates)! Supports files, packages, content, running commands and more!",
 	Long:  `Cakecutter is a tool for creating projects from pre-built cakes (templates)! Supports files, packages, content, running commands and more!`,
 }

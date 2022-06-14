@@ -22,6 +22,3 @@ write use command here
 This project is licensed under the MIT license
 ### Show your support
 Leave a ⭐ if you like this project
-
-***
-Readme made with 💖 using [README Generator by Dhravya Shah](https://github.com/Dhravya/readme-generator)
