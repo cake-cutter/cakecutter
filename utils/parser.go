@@ -16,11 +16,16 @@ type Config struct {
 
 	Content map[string]string `toml:"content"`
 
-	FileStructure map[string][]string `toml:"filestructure"`
+	FileStructure map[string]string `toml:"filestructure"`
 
-	Commands map[string][]string `toml:"commands"`
+	Commands map[string]string `toml:"commands"`
 
-	Questions map[string]string `toml:"questions"`
+	Questions map[string][]struct {
+		Question string   `toml:"ques"`
+		Type     string   `toml:"type"`
+		Options  []string `toml:"options"`
+		Default  string   `toml:"default"`
+	} `toml:"questions"`
 }
 
 func ParseToml(txt string) (*Config, error) {

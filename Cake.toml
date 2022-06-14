@@ -5,26 +5,42 @@
 name = "Cakecutter"
 description = "Cakecutter template (For rust)"
 
-[questions.a]
+# Questions
+[[questions.a]]
 type = "input"
-message = "What is your name?"
+ques = "What is your name?"
+default = "John Doe"
+
+[[questions.ts]]
+type = "menu"
+ques = "What is your favorite color?"
+options = [
+    "Yes", "No"
+]
 
 [filestructure]
-root = ["LICENSE"]
-src = ["main.go"]
-a = []
-"a/b" = []
+"tsconfig.json" = """
+{{if eq (index . "ts") "Yes"}}
+    true
+{{else}}
+    false
+{{end}}
+"""
+"src/main.py" = """
+
+"""
 
 # If you want to, you can literally write all the content here in one file but then what's the point of a "template" lol
 [content]
-LICENSE = """
-Copyright (c) 2020 Dhravya Shah
-"""
-"src/main.go" = """
-package main
+"tsconfig.json" = """
+{{index . "a"}}
 """
 
 [commands]
-# Commands are run every time a new project is created.
-1 = ["python", "-m", "venv", "venv"]
-2 = ["npm", "init", "-y"]
+"npm -y init" = """
+{{if eq (index . "ts") "Yes"}}
+    true
+{{else}}
+    false
+{{end}}
+"""

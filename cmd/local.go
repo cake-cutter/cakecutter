@@ -54,18 +54,22 @@ var localCmd = &cobra.Command{
 			utils.Check(err)
 		}, "Parsing toml...")
 
+		ans := make(map[string]string)
+
+		utils.CutTheQuestions(&ans, conf)
+
 		utils.MakeItSpin(func() {
-			err = utils.CutDir(path_to_dir, conf)
+			err = utils.CutDir(path_to_dir, conf, ans)
 			utils.Check(err)
 		}, "Cutting file structure...")
 
 		utils.MakeItSpin(func() {
-			err = utils.CutFiles(path_to_dir, conf)
+			err = utils.CutFiles(path_to_dir, conf, ans)
 			utils.Check(err)
 		}, "Cutting files...")
 
 		utils.MakeItSpin(func() {
-			err = utils.CutDaCommands(path_to_dir, conf.Commands)
+			err = utils.CutDaCommands(path_to_dir, conf.Commands, ans)
 			utils.Check(err)
 		}, "Cutting commands...")
 
