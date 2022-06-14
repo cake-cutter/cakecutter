@@ -22,4 +22,5 @@ package main
 
 [commands]
 # Commands are run every time a new project is created.
-1 = ["echo", "hey"]
+1 = ["python", "-m", "venv", "venv"]
+2 = ["npm", "init", "-y"]

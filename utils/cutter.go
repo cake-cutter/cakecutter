@@ -57,10 +57,12 @@ func CutFiles(dir string, conf *Config) error {
 
 }
 
-func RunCommands(cmds [][]string) error {
+func CutDaCommands(dir string, cmds map[string][]string) error {
 
 	for _, cmd := range cmds {
-		err := exec.Command(cmd[0], cmd[1:]...).Run()
+		cmd := exec.Command(cmd[0], cmd[1:]...)
+		cmd.Dir = dir
+		err := cmd.Run()
 		if err != nil {
 			return err
 		}

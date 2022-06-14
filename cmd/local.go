@@ -64,6 +64,11 @@ var localCmd = &cobra.Command{
 			utils.Check(err)
 		}, "Cutting files...")
 
+		utils.MakeItSpin(func() {
+			err = utils.CutDaCommands(path_to_dir, conf.Commands)
+			utils.Check(err)
+		}, "Cutting commands...")
+
 		fmt.Println(utils.Colorize("green", "Successfully cutted `"+path_to_dir+"`"))
 
 	},
