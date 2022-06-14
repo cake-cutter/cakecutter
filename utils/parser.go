@@ -19,6 +19,8 @@ type Config struct {
 	FileStructure map[string][]string `toml:"filestructure"`
 
 	Commands map[string][]string `toml:"commands"`
+
+	Questions map[string]string `toml:"questions"`
 }
 
 func ParseToml(txt string) (*Config, error) {

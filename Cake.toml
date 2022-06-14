@@ -5,18 +5,22 @@
 name = "Cakecutter"
 description = "Cakecutter template (For rust)"
 
+[questions.a]
+type = "input"
+message = "What is your name?"
+
 [filestructure]
 root = ["LICENSE"]
 src = ["main.go"]
 a = []
-b--b = []
+"a/b" = []
 
 # If you want to, you can literally write all the content here in one file but then what's the point of a "template" lol
 [content]
 LICENSE = """
 Copyright (c) 2020 Dhravya Shah
 """
-src--main-go = """
+"src/main.go" = """
 package main
 """
 
