@@ -56,7 +56,8 @@ var localCmd = &cobra.Command{
 
 		ans := make(map[string]string)
 
-		utils.CutTheQuestions(&ans, conf)
+		err = utils.CutTheQuestions(&ans, conf)
+		utils.Check(err)
 
 		utils.MakeItSpin(func() {
 			err = utils.CutDir(path_to_dir, conf, ans)

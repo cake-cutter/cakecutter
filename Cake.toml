@@ -26,15 +26,14 @@ options = [
     false
 {{end}}
 """
-"src/main.py" = """
-
-"""
+"src/" = "true"
 
 # If you want to, you can literally write all the content here in one file but then what's the point of a "template" lol
 [content]
 "tsconfig.json" = """
 {{index . "a"}}
 """
+
 
 [commands]
 "npm -y init" = """

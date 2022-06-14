@@ -42,7 +42,7 @@ func CutTheQuestions(ans *map[string]string, conf *Config) error {
 
 			answ[k] = result
 
-		case "menu":
+		case "menu", "select":
 
 			var result string
 
