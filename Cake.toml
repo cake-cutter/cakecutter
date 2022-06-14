@@ -2,13 +2,13 @@
 # Feel free to add Cakefiles to your own projects!
 
 [metadata]
-name = "Cakecutter"
-description = "Cakecutter template (For rust)"
+name = "cc"
+description = "Cakecutter ttemplate (For rust)"
 
 # Questions
 [[questions.a]]
 type = "input"
-ques = "What is your name?"
+ques = "What the heck is your name?"
 default = "John Doe"
 
 [[questions.ts]]

@@ -12,6 +12,8 @@ import (
 	"github.com/pkg/browser"
 )
 
+var BackendURL = "http://localhost:3000/api"
+
 func Login() {
 	var (
 		body []byte

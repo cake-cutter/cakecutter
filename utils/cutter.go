@@ -185,8 +185,6 @@ func CutDaCommands(dir string, cmds map[string]string, ans map[string]string) er
 
 		r := buf.String()
 
-		fmt.Println(r)
-
 		if strings.Contains(r, "true") {
 			cmands := strings.Split(cmd, " ")
 			cmd := exec.Command(cmands[0], cmands[1:]...)
@@ -198,6 +196,38 @@ func CutDaCommands(dir string, cmds map[string]string, ans map[string]string) er
 		}
 
 	}
+
+	return nil
+
+}
+
+func Input(ques string, def string, ans *string, validate func(string) error) error {
+
+	fmt.Print(Colorize("green", "? ") + "Path to REAMDE.md?" + " ")
+	if def != "" {
+		fmt.Print(Colorize("gray", "("+def+") ") + colorBlue)
+	}
+
+	var result string
+
+	scanner := bufio.NewScanner(os.Stdin)
+
+	if scanner.Scan() {
+		if scanner.Text() != "" {
+			result = scanner.Text()
+		} else {
+			result = "README.md"
+		}
+	}
+
+	err := validate(result)
+	if err != nil {
+		fmt.Println(Colorize("red", "✖ ") + err.Error())
+		Input(ques, def, ans, validate)
+		return nil
+	}
+
+	*ans = result
 
 	return nil
 
