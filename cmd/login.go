@@ -14,7 +14,7 @@ func init() {
 var loginCmd = &cobra.Command{
 	Use:   "login",
 	Short: "Login to your account",
-	Long:  "Login to your account your github",
+	Long:  "Login with your Github account",
 
 	Run: func(cmd *cobra.Command, args []string) {
 
