@@ -6,7 +6,7 @@ Create projects from pre-built cakes (templates) in seconds!
 
 ***
 
-### Installation
+## Installation
 
 ### Using `go`
 The app is written in `go`, so if you have `go` install run
@@ -45,15 +45,15 @@ npm install -g cc-for-linux
 
 </details>
 
-### Usage
+## Usage
 ```
 cc help
 ```
 
-### Contributing
+## Contributing
 
 Feel free to contribute
-### License
+## License
 This project is licensed under the MIT license
-### Show your support
+## Show your support
 Leave a ⭐ if you like this project
