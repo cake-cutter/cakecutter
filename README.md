@@ -49,7 +49,7 @@ npm install -g cc-for-linux
 
 ### Using binary executables
 
-Download the binary executables from `bin/<your_os>` and add to environment variable
+Download the binary executables from `bin/<your_os>`.
 
 ## Usage
 ```
