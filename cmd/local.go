@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/AlecAivazis/survey/v2"
 	"github.com/cake-cutter/cc/utils"
 	"github.com/spf13/cobra"
 )
@@ -33,7 +34,30 @@ var localCmd = &cobra.Command{
 		path_to_dir := args[1]
 		if _, err := os.Stat(path_to_dir); os.IsNotExist(err) {
 		} else {
-			return fmt.Errorf("Directory already exist")
+
+			dir, err := os.ReadDir(path_to_dir)
+			utils.Check(err)
+			if len(dir) > 0 {
+
+				fmt.Println()
+
+				var res string
+
+				survey.AskOne(&survey.Select{
+					Message: "The directory `" + path_to_dir + "` has some files. Are you sure you want to use it?",
+					Options: []string{"Yes", "No"},
+					Default: "No",
+				}, &res)
+
+				if res == "No" {
+					return fmt.Errorf("Aborted")
+				}
+
+				fmt.Println()
+
+				return nil
+
+			}
 		}
 
 		return nil
