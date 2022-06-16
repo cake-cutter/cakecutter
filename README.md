@@ -45,6 +45,12 @@ npm install -g cc-for-linux
 
 </details>
 
+> I dont have a `mac`, `linux` so I dont know if it works in those two os. Please create an issue if it does not work
+
+### Using binary executables
+
+Download the binary executables from `bin/<your_os>` and add to environment variable
+
 ## Usage
 ```
 cc help
