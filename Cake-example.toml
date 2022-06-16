@@ -3,12 +3,12 @@
 
 [metadata]
 name = "cc"
-description = "Cakecutter ttemplate (For rust)"
+description = "Cakecutter template example" # You need to write metadata for every cake
 
 # Questions
 [[questions.a]]
-type = "input"
-ques = "What the heck is your name?"
+type = "input" # This can be input | menu | select
+ques = "What is your name?"
 default = "John Doe"
 
 [[questions.ts]]
@@ -25,11 +25,14 @@ options = [
 {{else}}
     false
 {{end}}
-"""
+""" 
+# Cakecutter uses go's template syntax.
+# In the above example, if ts is "Yes", then the file will be created.
+
 "src/" = "true"
 
 # If you want to, you can literally write all the content here in one file but then what's the point of a "template" lol
-[content]
+[content] # Write template content here, things like 
 "tsconfig.json" = """
 {{index . "a"}}
 """
@@ -43,3 +46,5 @@ options = [
     false
 {{end}}
 """
+
+# You can find more examples in the /examples folder.

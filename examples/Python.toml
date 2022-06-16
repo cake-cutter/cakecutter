@@ -1,6 +1,27 @@
+[metadata]
+name = "Python Cake"
+description = "Cakecutter template example for a Python project"
+
+[filestructure]
+"LICENSE" = 'true'
+"README.md" = 'true'
+"CHANGELOG.md" = 'true'
+"CONTRIBUTING.md" = 'true'
+"CODE_OF_CONDUCT.md" = 'true'
+"src/main.py" = 'true'
+"src/__init__.py" = 'true'
+"tests/__init__.py" = 'true'
+
+[[questions.name]]
+type = "input" # This can be input | menu | select
+ques = "What is your name?"
+default = "John Doe"
+
+[content]
+"LICENSE" = """
 MIT License
 
-Copyright (c) 2022 cake-cutter
+Copyright (c) 2022 {{index . "name"}}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +40,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+"""
+
+[commands]
+"python -m venv env" = 'true'
+# "env/Scripts/activate" = """
+# {{if eq .runtime.GOOS "windows"}}
+# true
+# {{else}}
+# false
+# {{end}}""" # Activate the virtual environment for windows
