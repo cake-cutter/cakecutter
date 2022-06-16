@@ -20,6 +20,7 @@ var cutCmd = &cobra.Command{
 	Use:   "cut",
 	Short: "Cuts a online cake xD (Creates a template from an online template)",
 	Long:  "Cuts a online cake xD (Creates a template from an online template)",
+  Aliases: []string{"run"},
 
 	Args: func(cmd *cobra.Command, args []string) error {
 
