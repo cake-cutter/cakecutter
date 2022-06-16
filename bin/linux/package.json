@@ -1,0 +1,16 @@
+{
+  "name": "cc-for-linux",
+  "version": "1.0.0",
+  "description": "Cakecutter is a powerful tool for setting up a basic app of any type/language/framework.",
+  "bin" : {
+    "cc": "cc"
+  },
+  "keywords": [
+    "cc",
+    "cc-for-linux",
+    "cli",
+    "cakecutter"
+  ],
+  "author": "cake-cutter",
+  "license": "MIT"
+}

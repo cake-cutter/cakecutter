@@ -1,0 +1,25 @@
+{
+  "name": "cc-for-mac",
+  "version": "1.0.0",
+  "description": "Cakecutter is a powerful tool for setting up a basic app of any type/language/framework",
+  "bin": {
+    "cc": "cc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cake-cutter/cc.git"
+  },
+  "keywords": [
+    "cli",
+    "cc",
+    "cakecutter",
+    "cc-for-mac",
+    "cakecutter-for-mac"
+  ],
+  "author": "cake-cutter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cake-cutter/cc/issues"
+  },
+  "homepage": "https://github.com/cake-cutter/cc#readme"
+}

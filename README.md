@@ -8,9 +8,42 @@ Create projects from pre-built cakes (templates) in seconds!
 
 ### Installation
 
+### Using `go`
+The app is written in `go`, so if you have `go` install run
 ```
 go install github.com/cake-cutter/cc@latest
 ```
+
+### Using `npm`
+
+If you have `npm` you can install `cakecutter` by running
+
+<details>
+  <summary>For Windows</summary>
+
+```
+npm install -g cakecutter
+```
+
+</details>
+
+<details>
+  <summary>For MacOS</summary>
+
+```
+npm install -g cc-for-mac
+```
+
+</details>
+
+<details>
+  <summary>For Linux</summary>
+
+```
+npm install -g cc-for-linux
+```
+
+</details>
 
 ### Usage
 ```
