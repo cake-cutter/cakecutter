@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+  "strings"
 
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/cake-cutter/cc/utils"
@@ -72,6 +73,16 @@ var publishCmd = &cobra.Command{
 			fmt.Println(utils.Colorize("red", "\nAborted"))
 			os.Exit(1)
 		}
+
+    if strings.Contains(cake.Metadata.Name, " ") {
+      fmt.Println(utils.Colorize("red", "\nThe name cannot contain whitespace!"))
+      os.Exit(1)
+    }
+
+    if len(cake.Metadata.Name) < 1 {
+      fmt.Println(utils.Colorize("red", "\nThe name is empty"))
+      os.Exit(1)
+    }
 
 		utils.Input(
 			"Enter the REAMDE's path ",
