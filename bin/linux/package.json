@@ -1,6 +1,6 @@
 {
   "name": "cc-for-linux",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Cakecutter is a powerful tool for setting up a basic app of any type/language/framework.",
   "bin" : {
     "cc": "cc"
