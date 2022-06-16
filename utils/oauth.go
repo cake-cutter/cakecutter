@@ -12,7 +12,7 @@ import (
 	"github.com/pkg/browser"
 )
 
-var BackendURL = "https://cakecutter.vercel.app/api"
+var BackendURL = "https://cakes.run/api"
 
 func Login() {
 	var (
