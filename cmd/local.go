@@ -98,7 +98,7 @@ var localCmd = &cobra.Command{
 			utils.Check(err)
 		}, "Cutting commands...")
 
-		fmt.Println(utils.Colorize("green", "Successfully cutted `"+path_to_dir+"`"))
+		fmt.Println(utils.Colorize("green", "Successfully cut `"+path_to_dir+"`"))
 
 	},
 }
