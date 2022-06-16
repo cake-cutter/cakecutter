@@ -9,7 +9,7 @@ Create projects from pre-built cakes (templates) in seconds!
 ## Installation
 
 ### Using `go`
-The app is written in `go`, so if you have `go` install run
+The cli is written in `go`, so if you have `go` installed run
 ```
 go install github.com/cake-cutter/cc@latest
 ```
