@@ -10,6 +10,7 @@ import (
 	"text/template"
 
 	"github.com/AlecAivazis/survey/v2"
+	"github.com/mattn/go-shellwords"
 )
 
 func CutTheQuestions(ans *map[string]string, conf *Config) error {
@@ -76,9 +77,16 @@ func CutDir(dir string, conf *Config, ans map[string]string) error {
 
 	var err error
 
-	err = os.Mkdir(dir, 0755)
+	path_exists, err := PathExists(dir)
 	if err != nil {
 		return err
+	}
+
+	if !path_exists {
+		err = os.Mkdir(dir, 0755)
+		if err != nil {
+			return err
+		}
 	}
 
 	for k, v := range conf.FileStructure {
@@ -186,10 +194,13 @@ func CutDaCommands(dir string, cmds map[string]string, ans map[string]string) er
 		r := buf.String()
 
 		if strings.Contains(r, "true") {
-			cmands := strings.Split(cmd, " ")
+			cmands, err := shellwords.Parse(cmd)
+			if err != nil {
+				return err
+			}
 			cmd := exec.Command(cmands[0], cmands[1:]...)
 			cmd.Dir = dir
-			err := cmd.Run()
+			err = cmd.Run()
 			if err != nil {
 				return err
 			}
