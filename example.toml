@@ -1,0 +1,15 @@
+[metadata]
+name = "name-printer"
+description = "Prints your name to a file in seconds!" # XD
+
+[[questions.name]]
+ques = "What is your name?"
+type = "input"
+
+[filestructure]
+"name.txt" = "true"
+
+[content]
+"name.txt" = '''
+{{index . "name"}}
+'''

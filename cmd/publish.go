@@ -7,7 +7,7 @@ import (
 	"io"
 	"net/http"
 	"os"
-  "strings"
+	"strings"
 
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/cake-cutter/cc/utils"
@@ -37,7 +37,7 @@ var publishCmd = &cobra.Command{
 	},
 	Run: func(cmd *cobra.Command, args []string) {
 
-		user, loggedIn, err := utils.LoggedIn()
+		_, loggedIn, err := utils.LoggedIn()
 		utils.Check(err)
 
 		if !loggedIn {
@@ -74,15 +74,15 @@ var publishCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-    if strings.Contains(cake.Metadata.Name, " ") {
-      fmt.Println(utils.Colorize("red", "\nThe name cannot contain whitespace!"))
-      os.Exit(1)
-    }
+		if strings.Contains(cake.Metadata.Name, " ") {
+			fmt.Println(utils.Colorize("red", "\nThe name cannot contain whitespace!"))
+			os.Exit(1)
+		}
 
-    if len(cake.Metadata.Name) < 1 {
-      fmt.Println(utils.Colorize("red", "\nThe name is empty"))
-      os.Exit(1)
-    }
+		if len(cake.Metadata.Name) < 1 {
+			fmt.Println(utils.Colorize("red", "\nThe name is empty"))
+			os.Exit(1)
+		}
 
 		utils.Input(
 			"Enter the REAMDE's path ",
@@ -110,12 +110,15 @@ var publishCmd = &cobra.Command{
 			body, err := os.ReadFile(result)
 			utils.Check(err)
 
+			_t, err := utils.GetToken()
+			utils.Check(err)
+
 			j_ := map[string]string{
 				"name":   cake.Metadata.Name,
 				"short":  cake.Metadata.Description,
 				"cake":   string(content),
 				"dsc":    string(body),
-				"author": *user,
+				"author": *_t,
 			}
 
 			aa, err := json.Marshal(j_)

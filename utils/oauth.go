@@ -219,3 +219,30 @@ func Logout() error {
 	return nil
 
 }
+
+func GetToken() (*string, error) {
+
+	var token string
+
+	homedir, err := os.UserHomeDir()
+
+	if err != nil {
+		return nil, err
+	}
+
+	yes, err := PathExists(homedir + "/cakecutter/oauth")
+	if err != nil {
+		return nil, err
+	}
+
+	if yes {
+
+		content, err := os.ReadFile(homedir + "/cakecutter/oauth")
+		if err != nil {
+			return nil, err
+		}
+		token = string(content)
+		return &token, nil
+	}
+	return nil, nil
+}
