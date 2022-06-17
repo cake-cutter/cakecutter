@@ -18,8 +18,8 @@ func init() {
 
 var cutCmd = &cobra.Command{
 	Use:   "cut",
-	Short: "Cuts a online cake xD (Creates a template from an online template)",
-	Long:  "Cuts a online cake xD (Creates a template from an online template)",
+	Short: "Cuts an online cake (Creates a template from an online template)",
+	Long:  "Cuts an online cake (Creates a template from an online template)",
   Aliases: []string{"run"},
 
 	Args: func(cmd *cobra.Command, args []string) error {
@@ -43,7 +43,7 @@ var cutCmd = &cobra.Command{
 				var res string
 
 				survey.AskOne(&survey.Select{
-					Message: "The directory `" + path_to_dir + "` has some files. Are you sure you want to use it?",
+					Message: "The directory `" + path_to_dir + "` already has some files. Are you sure you want to use it? This may have unforseen consequences.",
 					Options: []string{"Yes", "No"},
 					Default: "No",
 				}, &res)
@@ -118,19 +118,19 @@ var cutCmd = &cobra.Command{
 		utils.MakeItSpin(func() {
 			err = utils.CutDir(path_to_dir, conf, ans)
 			utils.Check(err)
-		}, "Cutting file structure...")
+		}, "🔪 Cutting file structure...")
 
 		utils.MakeItSpin(func() {
 			err = utils.CutFiles(path_to_dir, conf, ans)
 			utils.Check(err)
-		}, "Cutting files...")
+		}, "🔪 Cutting files...")
 
 		utils.MakeItSpin(func() {
 			err = utils.CutDaCommands(path_to_dir, conf.Commands, ans)
 			utils.Check(err)
-		}, "Cutting commands...")
+		}, "🔪 Cutting commands...")
 
-		fmt.Println(utils.Colorize("green", "Successfully cut `"+path_to_dir+"`"))
+		fmt.Println(utils.Colorize("green", "Successfully cut.`"+path_to_dir+"`"))
 
 	},
 }
