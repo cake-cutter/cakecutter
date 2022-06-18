@@ -3,12 +3,11 @@
 <img src = "https://github.com/Dhravya/Cakecutter/raw/main/images/cakecutter.png" width="300">
 <h1 align="center">Cakecutter</h1>
 <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /><br> 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 Create projects from pre-built cakes (templates) in seconds!
 </div>
 
 ***
-
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 [Read the full Documentation](https://docs.cakes.run)
 
 ## 👀 What is Cakecutter?
