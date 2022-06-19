@@ -2,7 +2,7 @@
 <!-- logo -->
 <img src = "https://github.com/Dhravya/Cakecutter/raw/main/images/cakecutter.png" width="300">
 <h1 align="center">Cakecutter</h1>
-<img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /><br> 
+<img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg" /><br> 
 Create projects from pre-built cakes (templates) in seconds!
 </div>
 
@@ -81,7 +81,7 @@ Find cakes made by other users on [Cakes.run](https://cakes.run)
 
 
 ## Contributing
-Cakecutter is *fully* open source. If you want to contribute, please create an issue on the appropriate [repository](https://github.com/cake-cutter) and we will assign the task to someone (or you).
+Cakecutter is *completely* open source. If you want to contribute, please create an issue on the appropriate [repository](https://github.com/cake-cutter) and we will assign the task to someone (or you).
 
 ## Help and community
 If you need any help, or want to ask questions, or suggest features, please head over to the [Discussions tab](https://github.com/cake-cutter/cc/discussions)
