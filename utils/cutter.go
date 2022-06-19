@@ -214,7 +214,7 @@ func CutDaCommands(dir string, cmds map[string]string, ans map[string]string) er
 
 func Input(ques string, def string, ans *string, validate func(string) error) error {
 
-	fmt.Print(Colorize("green", "? ") + "Path to REAMDE.md?" + " ")
+	fmt.Print(Colorize("green", "? ") + "Path to README.md?" + " ")
 	if def != "" {
 		fmt.Print(Colorize("gray", "("+def+") ") + colorBlue)
 	}
