@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"sort"
 
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/cake-cutter/cc/utils"
@@ -92,6 +93,15 @@ var localCmd = &cobra.Command{
 			err = utils.CutFiles(path_to_dir, conf, ans)
 			utils.Check(err)
 		}, "Cutting files...")
+
+		cs, err := utils.ParseCommands(conf.Commands, ans)
+		utils.Check(err)
+
+		sort.Ints(cs)
+
+		for _, v := range cs {
+
+		}
 
 		utils.MakeItSpin(func() {
 			err = utils.CutDaCommands(path_to_dir, conf.Commands, ans)

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/url"
 	"os"
+	"strconv"
 
 	"github.com/BurntSushi/toml"
 )
@@ -18,7 +19,7 @@ type Config struct {
 
 	FileStructure map[string]string `toml:"filestructure"`
 
-	Commands map[string]string `toml:"commands"`
+	Commands map[int][2]string `toml:"commands"`
 
 	Questions map[string][]struct {
 		Question string   `toml:"ques"`
@@ -30,8 +31,26 @@ type Config struct {
 
 func ParseToml(txt string) (*Config, error) {
 	var (
-		conf = &Config{}
-		err  error
+		conf = &struct {
+			Metadata struct {
+				Name        string
+				Description string
+			} `toml:"metadata"`
+
+			Content map[string]string `toml:"content"`
+
+			FileStructure map[string]string `toml:"filestructure"`
+
+			Commands map[string][2]string `toml:"commands"`
+
+			Questions map[string][]struct {
+				Question string   `toml:"ques"`
+				Type     string   `toml:"type"`
+				Options  []string `toml:"options"`
+				Default  string   `toml:"default"`
+			} `toml:"questions"`
+		}{}
+		err error
 	)
 
 	_, err = toml.Decode(txt, conf)
@@ -39,7 +58,24 @@ func ParseToml(txt string) (*Config, error) {
 		return nil, err
 	}
 
-	return conf, nil
+	_cp := make(map[int][2]string)
+	for k, v := range conf.Commands {
+		ik, err := strconv.Atoi(k)
+		if err != nil {
+			return nil, err
+		}
+		_cp[ik] = v
+	}
+
+	cp := &Config{
+		Metadata:      conf.Metadata,
+		Content:       conf.Content,
+		FileStructure: conf.FileStructure,
+		Commands:      _cp,
+		Questions:     conf.Questions,
+	}
+
+	return cp, nil
 
 }
 

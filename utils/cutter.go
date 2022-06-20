@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"sort"
 	"strings"
 	"text/template"
 
@@ -173,37 +174,55 @@ func CutFiles(dir string, conf *Config, ans map[string]string) error {
 
 }
 
-func CutDaCommands(dir string, cmds map[string]string, ans map[string]string) error {
+func ParseCommands(cmds map[int][2]string, ans map[string]string) ([]int, error) {
 
-	for cmd, v := range cmds {
+	var res []int
+
+	for k, v := range cmds {
 
 		buf := &bytes.Buffer{}
 
-		tm := template.New(v)
-		tm, err := tm.Parse(v)
+		tm := template.New(v[0])
+		tm, err := tm.Parse(v[1])
 
 		if err != nil {
-			return err
+			return nil, err
 		}
 
 		err = tm.Execute(buf, ans)
 		if err != nil {
-			return err
+			return nil, err
 		}
 
 		r := buf.String()
 
 		if strings.Contains(r, "true") {
-			cmands, err := shellwords.Parse(cmd)
-			if err != nil {
-				return err
-			}
-			cmd := exec.Command(cmands[0], cmands[1:]...)
-			cmd.Dir = dir
-			err = cmd.Run()
-			if err != nil {
-				return err
-			}
+			res = append(res, k)
+		}
+
+	}
+
+	sort.Ints(res)
+
+	return res, nil
+
+}
+
+func CutDaCommands(dir string, cmds map[int][2]string, order []int) error {
+
+	sort.Ints(order)
+
+	for _, v := range order {
+
+		cmands, err := shellwords.Parse(cmds[v][0])
+		if err != nil {
+			return err
+		}
+		cmd := exec.Command(cmands[0], cmands[1:]...)
+		cmd.Dir = dir
+		err = cmd.Run()
+		if err != nil {
+			return err
 		}
 
 	}
