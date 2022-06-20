@@ -19,7 +19,9 @@ type Config struct {
 
 	FileStructure map[string]string `toml:"filestructure"`
 
-	Commands map[int][2]string `toml:"commands"`
+	Commands map[int][2]string `toml:"commands-after"`
+
+	CommandsBefore map[int][2]string `toml:"commands-before"`
 
 	Questions map[string][]struct {
 		Question string   `toml:"ques"`
@@ -41,7 +43,9 @@ func ParseToml(txt string) (*Config, error) {
 
 			FileStructure map[string]string `toml:"filestructure"`
 
-			Commands map[string][2]string `toml:"commands"`
+			Commands map[string][2]string `toml:"commands-after"`
+
+			CommandsBefore map[string][2]string `toml:"commands-before"`
 
 			Questions map[string][]struct {
 				Question string   `toml:"ques"`
