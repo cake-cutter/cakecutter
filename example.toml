@@ -13,3 +13,8 @@ type = "input"
 "name.txt" = '''
 {{index . "name"}}
 '''
+
+[commands]
+1 = ["git init", "true"]
+2 = ["git add .", "true"]
+3 = ["git commit -m 'Initial commit by cakecutter'", "true"]

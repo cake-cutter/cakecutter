@@ -99,12 +99,28 @@ var localCmd = &cobra.Command{
 
 		sort.Ints(cs)
 
+		fmt.Println("\n" + utils.Colorize("green", "These commands are going to run... If these commands seems suspicious or harmful please report them by making an issue on the repo - `https://github.com/cake-cutter/cakes.run`"))
 		for _, v := range cs {
-
+			fmt.Println(utils.Colorize("gray", "  "+conf.Commands[v][0]))
 		}
 
+		var _res string
+
+		survey.AskOne(&survey.Select{
+			Message: "Do you want to run these commands?",
+			Options: []string{"Yes", "No"},
+		}, &_res)
+
+		if _res == "No" {
+			fmt.Println("\n" + utils.Colorize("red", "Aborted!"))
+			fmt.Println(utils.Colorize("green", "The rest of the cake has been cut."))
+			os.Exit(0)
+		}
+
+		fmt.Println()
+
 		utils.MakeItSpin(func() {
-			err = utils.CutDaCommands(path_to_dir, conf.Commands, ans)
+			err = utils.CutDaCommands(path_to_dir, conf.Commands, cs)
 			utils.Check(err)
 		}, "Cutting commands...")
 

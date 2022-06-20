@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"sort"
 
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/cake-cutter/cc/utils"
@@ -17,10 +18,10 @@ func init() {
 }
 
 var cutCmd = &cobra.Command{
-	Use:   "cut",
-	Short: "Cuts an online cake (Creates a template from an online template)",
-	Long:  "Cuts an online cake (Creates a template from an online template)",
-  Aliases: []string{"run"},
+	Use:     "cut",
+	Short:   "Cuts an online cake (Creates a template from an online template)",
+	Long:    "Cuts an online cake (Creates a template from an online template)",
+	Aliases: []string{"run"},
 
 	Args: func(cmd *cobra.Command, args []string) error {
 
@@ -125,12 +126,36 @@ var cutCmd = &cobra.Command{
 			utils.Check(err)
 		}, "🔪 Cutting files...")
 
+		cs, err := utils.ParseCommands(conf.Commands, ans)
+		utils.Check(err)
+
+		sort.Ints(cs)
+
+		fmt.Println("\n" + utils.Colorize("green", "These commands are going to run... If these commands seems suspicious or harmful please report them by making an issue on the repo - `https://github.com/cake-cutter/cakes.run`"))
+		for _, v := range cs {
+			fmt.Println(utils.Colorize("gray", "  "+fmt.Sprintf("%s", v)))
+		}
+
+		var _res string
+
+		survey.AskOne(&survey.Select{
+			Message: "Do you want to run these commands?",
+			Options: []string{"Yes", "No"},
+		}, &_res)
+
+		if _res == "No" {
+			fmt.Println("\n" + utils.Colorize("red", "Aborted!"))
+			fmt.Println(utils.Colorize("green", "The rest of the cake has been cut."))
+			os.Exit(0)
+		}
+
+		fmt.Println()
+
 		utils.MakeItSpin(func() {
-			err = utils.CutDaCommands(path_to_dir, conf.Commands, ans)
+			err = utils.CutDaCommands(path_to_dir, conf.Commands, cs)
 			utils.Check(err)
-		}, "🔪 Cutting commands...")
+		}, "Cutting commands...")
 
-		fmt.Println(utils.Colorize("green", "Successfully cut.`"+path_to_dir+"`"))
-
+		fmt.Println(utils.Colorize("green", "Successfully cut `"+path_to_dir+"`"))
 	},
 }
