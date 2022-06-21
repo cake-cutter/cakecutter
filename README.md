@@ -14,11 +14,11 @@ Create projects from pre-built cakes (templates) in seconds!
 Sometimes, the most difficult thing is to just get started with a project. Cakecutter is a tool that helps you to cut the cake and start your amazing project instantly. 
 
 What Cakecutter does:
-- Users can [publish](http://docs.cakes.run/6-publish/), [create](http://docs.cakes.run/3-create/) or [use a cake](http://docs.cakes.run/2-usage/) from [Cakes.run](https://cakes.run). Cakes are basically TOML files which contain all the information needed to create a project. 
+- Users can [publish](http://docs.cakes.run/en/installation/), [create](http://docs.cakes.run/en/creating-cakes/) or [use a cake](http://docs.cakes.run/en/using-cakes/) from [Cakes.run](https://cakes.run). Cakes are basically TOML files which contain all the information needed to create a project. 
 - According to the information in the `Cakefile`, Cakecutter will create all the files and (you can also fill them with content) in the correct location.
 - Setup commands (installing dependencies, etc) can be defined in the `Cakefile`. These commands are run after the files are generated.
-- Cakecutter can ask questions to the user and take input. The input can then be used as variables for the project template. [Read the docs here](http://docs.cakes.run/4-advance/)
-- Read the [Basic example cake](http://docs.cakes.run/5-example/) and [/examples/Python.toml] the Python Cake to see how Cakes are written.
+- Cakecutter can ask questions to the user and take input. The input can then be used as variables for the project template. [Read the docs here](http://docs.cakes.run/en/advanced-usage/)
+- Read the [Basic example cake](http://docs.cakes.run/en/example/) and [/examples/Python.toml] the Python Cake to see how Cakes are written.
 
 ## Installation
 
