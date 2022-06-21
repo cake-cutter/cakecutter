@@ -1,6 +1,6 @@
 {
   "name": "cakecutter",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Cakecutter is a powerful tool for setting up a basic app of any type/language/framework",
   
   "bin": {
