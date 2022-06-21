@@ -19,9 +19,9 @@ type Config struct {
 
 	FileStructure map[string]string `toml:"filestructure"`
 
-	Commands map[int][2]string `toml:"commands-after"`
+	Commands map[int][2]string `toml:"toppings"`
 
-	CommandsBefore map[int][2]string `toml:"commands-before"`
+	CommandsBefore map[int][2]string `toml:"batter"`
 
 	Questions map[string][]struct {
 		Question string   `toml:"ques"`
@@ -43,9 +43,9 @@ func ParseToml(txt string) (*Config, error) {
 
 			FileStructure map[string]string `toml:"filestructure"`
 
-			Commands map[string][2]string `toml:"commands-after"`
+			Commands map[string][2]string `toml:"toppings"`
 
-			CommandsBefore map[string][2]string `toml:"commands-before"`
+			CommandsBefore map[string][2]string `toml:"batter"`
 
 			Questions map[string][]struct {
 				Question string   `toml:"ques"`
@@ -71,12 +71,22 @@ func ParseToml(txt string) (*Config, error) {
 		_cp[ik] = v
 	}
 
+	__cp := make(map[int][2]string)
+	for k, v := range conf.CommandsBefore {
+		ik, err := strconv.Atoi(k)
+		if err != nil {
+			return nil, err
+		}
+		__cp[ik] = v
+	}
+
 	cp := &Config{
-		Metadata:      conf.Metadata,
-		Content:       conf.Content,
-		FileStructure: conf.FileStructure,
-		Commands:      _cp,
-		Questions:     conf.Questions,
+		Metadata:       conf.Metadata,
+		Content:        conf.Content,
+		FileStructure:  conf.FileStructure,
+		Commands:       _cp,
+		CommandsBefore: __cp,
+		Questions:      conf.Questions,
 	}
 
 	return cp, nil

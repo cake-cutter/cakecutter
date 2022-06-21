@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"runtime"
 	"sort"
 
 	"github.com/AlecAivazis/survey/v2"
@@ -80,49 +81,95 @@ var localCmd = &cobra.Command{
 		}, "Parsing toml...")
 
 		ans := make(map[string]string)
+		theData := utils.Data{
+			Os: runtime.GOOS,
+		}
 
 		err = utils.CutTheQuestions(&ans, conf)
 		utils.Check(err)
 
+		theData.Ans = ans
+
+		_cs, err := utils.ParseCommands(conf.CommandsBefore, theData)
+		utils.Check(err)
+
+		sort.Ints(_cs)
+
+		if len(_cs) > 0 {
+			fmt.Println("\n" + utils.Colorize("green", "These commands are going to run... If these commands seems suspicious or harmful please report them by making an issue on the repo - `https://github.com/cake-cutter/cakes.run`"))
+			for _, v := range _cs {
+				fmt.Println(utils.Colorize("gray", "  "+conf.CommandsBefore[v][0]))
+			}
+
+			var _res string
+
+			survey.AskOne(&survey.Select{
+				Message: "Do you want to run these commands?",
+				Options: []string{"Yes", "No"},
+			}, &_res)
+
+			if _res == "No" {
+				fmt.Println("\n" + utils.Colorize("red", "Aborted!"))
+				os.Exit(0)
+			}
+
+			fmt.Println()
+
+		}
+
+		path_exists, err := utils.PathExists(path_to_dir)
+		utils.Check(err)
+		if !path_exists {
+			err = os.Mkdir(path_to_dir, 0755)
+			utils.Check(err)
+		}
+
 		utils.MakeItSpin(func() {
-			err = utils.CutDir(path_to_dir, conf, ans)
+			err = utils.CutDaCommands(path_to_dir, conf.CommandsBefore, _cs)
+			utils.Check(err)
+		}, "Folding the batter...")
+
+		utils.MakeItSpin(func() {
+			err = utils.CutDir(path_to_dir, conf, theData)
 			utils.Check(err)
 		}, "Cutting file structure...")
 
 		utils.MakeItSpin(func() {
-			err = utils.CutFiles(path_to_dir, conf, ans)
+			err = utils.CutFiles(path_to_dir, conf, theData)
 			utils.Check(err)
 		}, "Cutting files...")
 
-		cs, err := utils.ParseCommands(conf.Commands, ans)
+		cs, err := utils.ParseCommands(conf.Commands, theData)
 		utils.Check(err)
 
 		sort.Ints(cs)
 
-		fmt.Println("\n" + utils.Colorize("green", "These commands are going to run... If these commands seems suspicious or harmful please report them by making an issue on the repo - `https://github.com/cake-cutter/cakes.run`"))
-		for _, v := range cs {
-			fmt.Println(utils.Colorize("gray", "  "+conf.Commands[v][0]))
+		if len(cs) > 0 {
+			fmt.Println("\n" + utils.Colorize("green", "These commands are gonna run to finish the setup... If these commands seems suspicious or harmful please report them by making an issue on the repo - `https://github.com/cake-cutter/cakes.run`"))
+			for _, v := range cs {
+				fmt.Println(utils.Colorize("gray", "  "+conf.Commands[v][0]))
+			}
+
+			var _res string
+
+			survey.AskOne(&survey.Select{
+				Message: "Do you want to run these commands?",
+				Options: []string{"Yes", "No"},
+			}, &_res)
+
+			if _res == "No" {
+				fmt.Println("\n" + utils.Colorize("red", "Aborted!"))
+				fmt.Println(utils.Colorize("green", "The rest of the cake has been cut."))
+				os.Exit(0)
+			}
+
+			fmt.Println()
 		}
-
-		var _res string
-
-		survey.AskOne(&survey.Select{
-			Message: "Do you want to run these commands?",
-			Options: []string{"Yes", "No"},
-		}, &_res)
-
-		if _res == "No" {
-			fmt.Println("\n" + utils.Colorize("red", "Aborted!"))
-			fmt.Println(utils.Colorize("green", "The rest of the cake has been cut."))
-			os.Exit(0)
-		}
-
-		fmt.Println()
 
 		utils.MakeItSpin(func() {
 			err = utils.CutDaCommands(path_to_dir, conf.Commands, cs)
 			utils.Check(err)
-		}, "Cutting commands...")
+		}, "Sprinkling toppings...")
 
 		fmt.Println(utils.Colorize("green", "Successfully cut `"+path_to_dir+"`"))
 

@@ -6,15 +6,13 @@ description = "Prints your name to a file in seconds!" # XD
 ques = "What is your name?"
 type = "input"
 
-[filestructure]
+[batter]
+1 = ["git init", "true"]
+
+[filestructure] 
 "name.txt" = "true"
 
 [content]
 "name.txt" = '''
-{{index . "name"}}
+{{index .Ans "name"}} is in {{.Os}}
 '''
-
-[commands-after]
-1 = ["git init", "true"]
-2 = ["git add .", "true"]
-3 = ["git commit -m 'Initial commit by cakecutter'", "true"]

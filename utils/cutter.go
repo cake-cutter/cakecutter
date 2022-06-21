@@ -14,6 +14,12 @@ import (
 	"github.com/mattn/go-shellwords"
 )
 
+type Data struct {
+	Ans      map[string]string
+	Gatherer map[string]string
+	Os       string
+}
+
 func CutTheQuestions(ans *map[string]string, conf *Config) error {
 
 	answ := make(map[string]string)
@@ -74,7 +80,7 @@ func RemoveItemFromSlice(slice []string, s int) []string {
 	return append(slice[:s], slice[s+1:]...)
 }
 
-func CutDir(dir string, conf *Config, ans map[string]string) error {
+func CutDir(dir string, conf *Config, ans Data) error {
 
 	var err error
 
@@ -133,7 +139,7 @@ func CutDir(dir string, conf *Config, ans map[string]string) error {
 	return nil
 }
 
-func CutFiles(dir string, conf *Config, ans map[string]string) error {
+func CutFiles(dir string, conf *Config, ans Data) error {
 
 	for k, v := range conf.Content {
 
@@ -174,7 +180,7 @@ func CutFiles(dir string, conf *Config, ans map[string]string) error {
 
 }
 
-func ParseCommands(cmds map[int][2]string, ans map[string]string) ([]int, error) {
+func ParseCommands(cmds map[int][2]string, ans Data) ([]int, error) {
 
 	var res []int
 
