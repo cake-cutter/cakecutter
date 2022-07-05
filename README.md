@@ -1,6 +1,6 @@
 <div align="center">
 <!-- logo -->
-<img src = "https://github.com/Dhravya/Cakecutter/raw/main/images/cakecutter.png" width="300">
+<img src = "https://avatars.githubusercontent.com/u/107420213?s=400&u=c8e217d0cba20a98db72ed5a68e0c342c24474fc&v=4" width="300">
 <h1 align="center">Cakecutter</h1>
 <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /><br> 
 Create projects from pre-built cakes (templates) in seconds!
