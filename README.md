@@ -16,7 +16,7 @@ Sometimes, the most difficult thing is to just get started with a project. Cakec
 What Cakecutter does:
 - Users can [publish](http://docs.cakes.run/en/installation/), [create](http://docs.cakes.run/en/creating-cakes/) or [use a cake](http://docs.cakes.run/en/using-cakes/) from [Cakes.run](https://cakes.run). Cakes are basically TOML files which contain all the information needed to create a project. 
 - According to the information in the `Cakefile`, Cakecutter will create all the files and (you can also fill them with content) in the correct location.
-- Setup commands (installing dependencies, etc) can be defined in the `Cakefile`. These commands are run after the files are generated.
+- Setup commands (installing dependencies, etc.) can be defined in the `Cakefile`. These commands are run after the files are generated.
 - Cakecutter can ask questions to the user and take input. The input can then be used as variables for the project template. [Read the docs here](http://docs.cakes.run/en/advanced-usage/)
 - Read the [Basic example cake](http://docs.cakes.run/en/example/) and [/examples/Python.toml] the Python Cake to see how Cakes are written.
 
@@ -72,18 +72,18 @@ cc help
 
 ## How to find cakes
 
-You can find cakes for your use case on [Cakes.run](https://cakes.run). You can also publish cakes yourself. 
+You can find cakes for your use cases on [Cakes.run](https://cakes.run). You can also publish cakes yourself. 
 
 ## Read the docs!
-Read the [Docs](http://docs.cakes.run) to learn how to use the cli, create and publish cakes yourself.
+Read the [Docs](http://docs.cakes.run) to learn how to use the cli and how to create and publish cakes yourself.
 
 Find cakes made by other users on [Cakes.run](https://cakes.run)
 
 
 ## Contributing
-Cakecutter is *fully* open source. If you want to contribute, please create an issue on the appropriate [repository](https://github.com/cake-cutter) and we will assign the task to someone (or you).
+Cakecutter is *completely* open source. If you want to contribute, please create an issue on the appropriate [repository](https://github.com/cake-cutter) and we will assign the task to someone (or you).
 
-## Help and community
+## Help and the community
 If you need any help, or want to ask questions, or suggest features, please head over to the [Discussions tab](https://github.com/cake-cutter/cc/discussions)
 
-You can also join our [Discord server](https://discord.gg/z7MZYhmx6w) where we have a community of developers, ready to help you out.
+You can also join our [Discord server](https://discord.gg/z7MZYhmx6w) where we have a community of developers ready to help you out.
