@@ -113,14 +113,19 @@ var cutCmd = &cobra.Command{
 		}, "Fetching cake...")
 
 		ans := make(map[string]string)
+		gatherers := make(map[string]string)
 		theData := utils.Data{
 			Os: runtime.GOOS,
 		}
+
+		err = utils.CutTheGatherers(gatherers, conf)
+		utils.Check(err)
 
 		err = utils.CutTheQuestions(&ans, conf)
 		utils.Check(err)
 
 		theData.Ans = ans
+		theData.Gatherer = gatherers
 
 		_cs, err := utils.ParseCommands(conf.CommandsBefore, theData)
 		utils.Check(err)

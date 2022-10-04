@@ -76,6 +76,19 @@ func CutTheQuestions(ans *map[string]string, conf *Config) error {
 	return nil
 }
 
+func CutTheGatherers(gatherers map[string]string, conf *Config) error {
+	for k, v := range conf.Gatherers {
+		var stdout, stderr bytes.Buffer
+		err := runCommand(v, &stdout, &stderr)
+		if err != nil {
+			return fmt.Errorf("failed to run command for id: %s, %w", k, err)
+		}
+		out := strings.TrimSuffix(stdout.String(), "\n")
+		gatherers[k] = out
+	}
+	return nil
+}
+
 func RemoveItemFromSlice(slice []string, s int) []string {
 	return append(slice[:s], slice[s+1:]...)
 }

@@ -23,6 +23,8 @@ type Config struct {
 
 	CommandsBefore map[int][2]string `toml:"batter"`
 
+	Gatherers map[string]string `toml:"gatherers"`
+
 	Questions map[string][]struct {
 		Question string   `toml:"ques"`
 		Type     string   `toml:"type"`
@@ -46,6 +48,8 @@ func ParseToml(txt string) (*Config, error) {
 			Commands map[string][2]string `toml:"toppings"`
 
 			CommandsBefore map[string][2]string `toml:"batter"`
+
+			Gatherers map[string]string `toml:"gatherers"`
 
 			Questions map[string][]struct {
 				Question string   `toml:"ques"`
@@ -86,6 +90,7 @@ func ParseToml(txt string) (*Config, error) {
 		FileStructure:  conf.FileStructure,
 		Commands:       _cp,
 		CommandsBefore: __cp,
+		Gatherers:      conf.Gatherers,
 		Questions:      conf.Questions,
 	}
 
